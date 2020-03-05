@@ -111,7 +111,7 @@ const login = {
     },
 
     init() {
-        const PATH_PREFIX = isDev ? "http://localhost:28001"
+        const PATH_PREFIX = isDev ? "http://192.168.0.131:28001"
             : "TODO";
 
         this.PATHS.login = `${PATH_PREFIX}${this.PATHS.login}`;
