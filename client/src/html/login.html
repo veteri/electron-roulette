@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+    <title>Tyyr Roulette 0.1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background: #19171c;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .login, .register {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            display: block;
+            width: 220px;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        button {
+            width: 220px;
+            height: 50px;
+            border: none;
+            outline: none;
+            color: #fff;
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+        .glow::before {
+            content: '';
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00,
+                #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+
+            animation: glowing 20s linear infinite;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            transition: glowing .3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        button.glow:active {
+            color: #000;
+        }
+
+        .glow::after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+        }
+
+        .glow:hover::after {
+            background: transparent;    
+        }
+
+        @keyframes glowing {
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 400% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+
+        .errors {
+            margin: 30px 0;
+            height: 50px;
+        }
+
+        .error {
+            min-width: 220px;
+            background: red;
+            color: #fff;
+            border-radius: 10px;
+            padding: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .no-account {
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .no-account a {
+            color: lightblue;
+        }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="login">
+        <div class="input">
+            <input class="username" type="text" placeholder="Username">
+        </div>
+        <div class="input">
+            <input class="password" type="password" placeholder="Password">
+        </div>
+        <div class="errors"></div>
+        <div class="no-account">
+            Dont have an account yet? <a class="switchRegister" href="#">Sign up</a>
+        </div>  
+        <button class="glow loginBtn">Start</button>
+    </div>  
+    <div class="register hidden">
+        <div class="input">
+            <input class="username" type="text" placeholder="Cho0se username">
+        </div>
+        <div class="input">
+            <input class="password" type="password" placeholder="Choose password">
+        </div>
+        <div class="errors"></div>
+        <div class="no-account">
+            <a class="switchLogin" href="#">Login</a> instead? 
+        </div>
+        <button class="glow registerBtn">Register</button>
+    </div> 
+
+    <!-- You can also require other files to run in this process -->
+    <script  src="../js/login.js"></script>
+  </body>
+</html>
