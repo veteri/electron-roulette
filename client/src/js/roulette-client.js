@@ -55,6 +55,7 @@ ipcRenderer.on("win", (e, type, amount) => {
     win.showWin(type, amount);
     win.once("add-to-funds", () => {
         topBar.addFunds(amount);
+        win.sound.playSound("addToFunds");
     });
 });
 
