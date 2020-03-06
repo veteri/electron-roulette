@@ -5,7 +5,7 @@ dotenv.config();
 const {app, BrowserWindow, Menu, MenuItem, ipcMain} = require('electron')
 const path = require('path')
 const io = require("socket.io-client");
-const IS_DEV = Boolean(process.env.IS_DEV);
+const IS_DEV = process.env.IS_DEV === "true";
 console.log(`IS_DEV: ${IS_DEV}`);
 
 let socket = io.connect(IS_DEV ? "http://192.168.0.131:28000" : "http://sandbox.icu", {transports: ["websocket"]});

@@ -1,8 +1,9 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
-const IS_DEV = Boolean(process.env.IS_DEV);
+const IS_DEV = process.env.IS_DEV === "true";
 const {ipcRenderer} = require("electron");
+console.log(`IS_DEV: ${IS_DEV}`);
 
 const login = {
     PATHS: {
