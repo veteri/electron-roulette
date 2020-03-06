@@ -15,7 +15,7 @@ class RouletteManager extends EventEmitter {
             black: [],
         };
 
-        this.nextSpinTimeStamp = 0;
+        this.nextSpinTimeOffset = this.ROULETTE_SPIN_INTERVAL - this.ROULETTE_SPIN_OVER_DELAY;
 
         setInterval(() => {
             const winner = getWinner();
@@ -27,12 +27,9 @@ class RouletteManager extends EventEmitter {
             // broadcast("spin", winner);
         
             setTimeout(() => {
-                this.nextSpinTimeStamp = Date.now() + (this.ROULETTE_SPIN_INTERVAL - this.ROULETTE_SPIN_OVER_DELAY);
-                const nextDate = new Date(this.nextSpinTimeStamp);
-                console.log(`[DEBUG] Spin finished! Next spin -> timeStamp: ${this.nextSpinTimeStamp}, time: ${nextDate.getHours()}:${nextDate.getMinutes()}:${nextDate.getSeconds()}`);
+                //console.log(`[DEBUG] Spin finished! Next spin -> timeStamp: ${this.nextSpinTimeOffset}, time: ${nextDate.getHours()}:${nextDate.getMinutes()}:${nextDate.getSeconds()}`);
 
-                this.io.emit("spin-over", this.nextSpinTimeStamp);
-                
+                this.io.emit("spin-over", this.nextSpinTimeOffset);
                 this.emit("spin-over");
                 this.updateAllUserCoins(winner);
                 this.clearAllBets();

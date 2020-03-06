@@ -21,6 +21,11 @@ class CountDown {
         return this;
     }
 
+    setTimeStampWithOffset(offset) {
+        this.timeStamp = Date.now() + offset;
+        return this;
+    }
+
     tick() {
         /* Enqueue next tick instantly */
         this.rafId = requestAnimationFrame(() => this.tick());

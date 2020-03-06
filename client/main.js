@@ -73,12 +73,12 @@ function createRouletteWindow(username) {
             }
         });
 
-        socket.on("spin-over", async (nextSpinTimeStamp) => {
-            console.log("got Spin is over! from server, next spin: ", nextSpinTimeStamp);
+        socket.on("spin-over", async (nextSpinTimeOffset) => {
+            console.log("got Spin is over! from server, nextSpinOffset: ", nextSpinTimeOffset);
 
             try {
                 if (rouletteWindow.isVisible()) {
-                    await rouletteWindow.webContents.send("spin-over", nextSpinTimeStamp);
+                    await rouletteWindow.webContents.send("spin-over", nextSpinTimeOffset);
                 }
             } catch (e) {
                 console.log(e);

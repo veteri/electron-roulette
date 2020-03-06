@@ -92,7 +92,7 @@ ipcRenderer.on("spin", (e, result) => {
 });
 
 /* Spin animation finished (hardcoded) */
-ipcRenderer.on("spin-over", (e, nextSpinTimeStamp) => {
+ipcRenderer.on("spin-over", (e, nextSpinTimeOffset) => {
     console.log("Got spin over from main process");
 
     const waitOverlay = document.querySelector(".wait");
@@ -104,7 +104,7 @@ ipcRenderer.on("spin-over", (e, nextSpinTimeStamp) => {
     }
 
     countDown
-        .setTimeStamp(nextSpinTimeStamp)
+        .setTimeStampWithOffset(nextSpinTimeOffset)
         .start()
         .show();
 
