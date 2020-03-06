@@ -74,7 +74,8 @@ function createRouletteWindow(username) {
         });
 
         socket.on("spin-over", async (nextSpinTimeStamp) => {
-            console.log("got Spin is over! from server");
+            console.log("got Spin is over! from server, next spin: ", nextSpinTimeStamp);
+
             try {
                 if (rouletteWindow.isVisible()) {
                     await rouletteWindow.webContents.send("spin-over", nextSpinTimeStamp);

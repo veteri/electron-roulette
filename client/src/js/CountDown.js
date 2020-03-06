@@ -54,6 +54,10 @@ class CountDown {
 
     start() {
         this.startTime = Date.now();
+        const startDate = new Date(this.startTime);
+        console.log(`[CountDown] Now: ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}`);
+        const spinDate = new Date(this.timeStamp);
+        console.log(`[CountDown] Nextspin: ${spinDate.getHours()}:${spinDate.getMinutes()}:${spinDate.getSeconds()}`);
         this.elements.progressBar.classList.add("t1");
         requestAnimationFrame(() => this.tick());
         return this;

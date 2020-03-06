@@ -28,7 +28,8 @@ class RouletteManager extends EventEmitter {
         
             setTimeout(() => {
                 this.nextSpinTimeStamp = Date.now() + (this.ROULETTE_SPIN_INTERVAL - this.ROULETTE_SPIN_OVER_DELAY);
-                console.log(`[DEBUG] Spin finished! Next spin -> ${this.nextSpinTimeStamp}`);
+                const nextDate = new Date(this.nextSpinTimeStamp);
+                console.log(`[DEBUG] Spin finished! Next spin -> timeStamp: ${this.nextSpinTimeStamp}, time: ${nextDate.getHours()}:${nextDate.getMinutes()}:${nextDate.getSeconds()}`);
 
                 this.io.emit("spin-over", this.nextSpinTimeStamp);
                 
