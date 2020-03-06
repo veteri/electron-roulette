@@ -2,8 +2,10 @@
 const {app, BrowserWindow, Menu, MenuItem, ipcMain} = require('electron')
 const path = require('path')
 const io = require("socket.io-client");
+const {isDev} = require("./src/js/env");
+console.log(`isDev: ${isDev}`);
 
-let socket = io.connect("http://192.168.0.131:28000");
+let socket = io.connect(isDev ? "http://192.168.0.131:28000" : "http://sandbox.icu", {transports: ["websocket"]});
 let rouletteWindow, loginWindow;
 
 function createLoginWindow() {

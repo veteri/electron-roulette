@@ -112,7 +112,7 @@ const login = {
 
     init() {
         const PATH_PREFIX = isDev ? "http://192.168.0.131:28001"
-            : "TODO";
+            : "http://sandbox.icu";
 
         this.PATHS.login = `${PATH_PREFIX}${this.PATHS.login}`;
         this.PATHS.register = `${PATH_PREFIX}${this.PATHS.register}`;
