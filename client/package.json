@@ -10,7 +10,7 @@
     },
     "repository": "https://github.com/electron/electron-quick-start",
     "keywords": [],
-    "author": "veteri",
+    "author": "zeez",
     "license": "CC0-1.0",
     "devDependencies": {
         "electron": "8.0.2",
@@ -24,8 +24,8 @@
         "socket.io-client": "^2.3.0"
     },
     "build": {
-        "appId": "com.tyyr.roulette",
-        "copyright": "Copyright 2020 20iq.club",
+        "appId": "com.zeez.roulette",
+        "copyright": "Copyright 2020 zeez",
         "win": {
             "target": "nsis"
         },
