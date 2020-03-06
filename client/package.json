@@ -30,7 +30,8 @@
             "target": "nsis"
         },
         "nsis": {
-            "oneClick": false
+            "oneClick": false,
+            "installerIcon": "build/icon.ico"
         },
         "linux": {
             "category": "Utility"
