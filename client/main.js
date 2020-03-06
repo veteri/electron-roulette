@@ -1,11 +1,14 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, Menu, MenuItem, ipcMain} = require('electron')
 const path = require('path')
 const io = require("socket.io-client");
-const {isDev} = require("./src/js/env");
-console.log(`isDev: ${isDev}`);
+const IS_DEV = Boolean(process.env.IS_DEV);
+console.log(`IS_DEV: ${IS_DEV}`);
 
-let socket = io.connect(isDev ? "http://192.168.0.131:28000" : "http://sandbox.icu", {transports: ["websocket"]});
+let socket = io.connect(IS_DEV ? "http://192.168.0.131:28000" : "http://sandbox.icu", {transports: ["websocket"]});
 let rouletteWindow, loginWindow;
 
 function createLoginWindow() {
@@ -16,7 +19,8 @@ function createLoginWindow() {
             nodeIntegration: true
         },
         backgroundColor: "#0f0e11",
-        show: true
+        show: true,
+        icon: path.join(__dirname, "/src/assets/app_icon.ico")
     });
 
     loginWindow.setMenu(null);

@@ -1,4 +1,7 @@
-const {isDev} = require("../js/env");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const IS_DEV = Boolean(process.env.IS_DEV);
 const {ipcRenderer} = require("electron");
 
 const login = {
@@ -111,7 +114,7 @@ const login = {
     },
 
     init() {
-        const PATH_PREFIX = isDev ? "http://192.168.0.131:28001"
+        const PATH_PREFIX = IS_DEV ? "http://192.168.0.131:28001"
             : "http://sandbox.icu";
 
         this.PATHS.login = `${PATH_PREFIX}${this.PATHS.login}`;
