@@ -114,7 +114,7 @@ class Roulette {
         await new Promise(r => setTimeout(r, 100));
         this.wrapper.classList.add("transition");
 
-        this.preElementCount = Math.floor(Math.random() * 30) + 45;
+        this.preElementCount = Math.floor(Math.random() * 50) + 80;
         this.postElementCount = Math.floor(Math.random() * 20) + 10;
 
         const { exact, winnerIndex } = result || this.predetermineWinner();

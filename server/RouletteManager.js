@@ -130,7 +130,7 @@ class RouletteManager extends EventEmitter {
                     coinsWon += winAmount;
                     await user.saveCoins(currentCoins);
                     
-                    winType = this.getWinType(bet.color, bet.amount);
+                    winType = this.getWinType(bet.color, winAmount);
                 } 
             }
 

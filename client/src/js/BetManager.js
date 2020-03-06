@@ -138,8 +138,10 @@ class BetManager extends EventEmitter {
                         return this.hidePrompt();
                     }
 
-                    if (!isNumber || value < 0) {
+                    if (!isNumber || value <= 0) {
                         alert("You can only place whole positive coin values as bets.");
+                        this.clearPromptValue();
+                        this.focusPrompt();
                         return false;
                     }
 
