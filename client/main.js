@@ -16,7 +16,8 @@ function createLoginWindow() {
         width: 400,
         height: 400,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            devtools: IS_DEV,
         },
         backgroundColor: "#0f0e11",
         show: true,
@@ -26,7 +27,6 @@ function createLoginWindow() {
     loginWindow.setMenu(null);
     loginWindow.loadFile("./src/html/login.html");
     loginWindow.setResizable(false);
-    loginWindow.webContents.openDevTools();
 }
 
 function createRouletteWindow(username) {
@@ -39,8 +39,10 @@ function createRouletteWindow(username) {
         minWidth: 800,
         minHeight: 600,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            devtools: IS_DEV,
         },
+
         backgroundColor: "#0f0e11",
         show: true,
         icon: path.join(__dirname, "/src/assets/app_icon.ico")
@@ -136,8 +138,6 @@ function createRouletteWindow(username) {
         console.log("mainWindow did-finish-load executed");
     });
 
-    // Open the DevTools.
-    rouletteWindow.webContents.openDevTools()
 
 }
 
