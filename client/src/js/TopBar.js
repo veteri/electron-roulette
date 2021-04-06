@@ -48,7 +48,13 @@ class TopBar {
 
         this.muteMusic
             .addEventListener("click", () => {
-                console.log("Todo mute music");
+                if (this.sound.isMusicMuted) {
+                    this.muteMusic.classList.remove("muted");
+                    this.sound.unmuteMusic();
+                } else {
+                    this.sound.muteMusic();
+                    this.muteMusic.classList.add("muted");
+                }
             });
     }
 

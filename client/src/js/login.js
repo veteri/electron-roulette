@@ -116,7 +116,7 @@ const login = {
 
     init() {
         const PATH_PREFIX = IS_DEV ? "http://192.168.0.131:28001"
-            : "http://sandbox.icu";
+            : "http://r.gyazo.io";
 
         this.PATHS.login = `${PATH_PREFIX}${this.PATHS.login}`;
         this.PATHS.register = `${PATH_PREFIX}${this.PATHS.register}`;

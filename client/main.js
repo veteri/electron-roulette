@@ -8,7 +8,7 @@ const io = require("socket.io-client");
 const IS_DEV = process.env.IS_DEV === "true";
 console.log(`IS_DEV: ${IS_DEV}`);
 
-let socket = io.connect(IS_DEV ? "http://192.168.0.131:28000" : "http://sandbox.icu", {transports: ["websocket"]});
+let socket = io.connect(IS_DEV ? "http://192.168.0.131:28000" : "http://r.gyazo.io", {transports: ["websocket"]});
 let rouletteWindow, loginWindow;
 
 function createLoginWindow() {
@@ -169,7 +169,7 @@ app.on('ready', () => {
 });
 
 app.on("will-quit", (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     socket.emit("client-closed-app");
     socket.removeAllListeners();
     console.log("before quit, removing socket listeners");

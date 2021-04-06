@@ -20,6 +20,8 @@ const betManager = new BetManager();
 
 const username = localStorage.getItem("username");
 
+topBar.sound.fadeMusic();
+
 /* Place bet on red */
 betManager.on("place-red", amount => {
     console.log("client bets " + amount + " on red!");
