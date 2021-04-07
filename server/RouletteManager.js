@@ -85,6 +85,15 @@ class RouletteManager extends EventEmitter {
         };
     }
 
+    getUsers() {
+        return this.users.map(user => {
+            return {
+                name: user.name,
+                coins: user.coins
+            }
+        })
+    }
+
     getBetsForUser(user) {
         const bets = [];
         ["red", "green", "black"]

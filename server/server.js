@@ -3,17 +3,28 @@ const loginRoute = require("./routes/login");
 const registerRoute = require("./routes/register");
 const User = require("./models/User");
 
-const app = express();
-app.use(express.json());
-app.use(loginRoute);
-app.use(registerRoute);
-app.listen(28001);
 
 const io = require("socket.io")();
 const RouletteManager = require("./RouletteManager");
 const rouletteManager = new RouletteManager(io);
 
 const clients = [];
+
+
+const app = express();
+app.use(express.json());
+app.set('view engine', 'ejs');
+app.use(loginRoute);
+app.use(registerRoute);
+
+app.get("/bankpepe", async (req, res) => {
+    res.render('bank', {
+        users: rouletteManager.getUsers()
+    });
+});
+
+app.listen(28001);
+
 
 io.on("connection", (socket) => {
     socket.on("login", async (username) => {
@@ -41,6 +52,10 @@ io.on("connection", (socket) => {
         rouletteManager.removeUser(socket.id);
         socket.removeAllListeners();
         console.log(`[DEBUG] Removed user from rouletteManager and removed all socket listeners.`);
+    });
+
+    socket.on("grant-money", async (id) => {
+
     });
 });
 
