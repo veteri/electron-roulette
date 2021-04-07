@@ -8,16 +8,19 @@ class Sound {
                 placebet: document.querySelector(".placebet"),
                 newround: document.querySelector(".newround"),
                 welcome: document.querySelector(".welcome"),
-                addToFunds: document.querySelector(".add-to-funds")
-                
+                cashNormal: document.querySelector(".cash-normal-win"),
+                cashBig: document.querySelector(".cash-big-win"),
+                cashJackpot: document.querySelector(".cash-jackpot")
             },
             music: {
-                bg: document.querySelector(".bg")
+                bg: document.querySelector(".bg"),
+                ambient: document.querySelector(".bgambient")
             }
         };
 
         this.isEffectsMuted = false;
         this.isMusicMuted = false;
+        this.isAmbientMuted = false;
     }
 
     isEffectsMuted() {
@@ -27,6 +30,7 @@ class Sound {
     muteEffects() {
         Object.keys(this.audioElements.effects)
             .forEach(key => {
+                
                 this.audioElements.effects[key].volume = 0;
             });
 
@@ -43,21 +47,23 @@ class Sound {
     }
 
     muteMusic() {
-        Object.keys(this.audioElements.music)
-            .forEach(key => {
-                this.audioElements.music[key].volume = 0;
-            });
-
+        this.audioElements.music.bg.volume = 0;
         this.isMusicMuted = true;
     }
 
     unmuteMusic() {
-        Object.keys(this.audioElements.music)
-            .forEach(key => {
-                this.audioElements.music[key].volume = 1;
-            });
-
+        this.audioElements.music.bg.volume = 0.8;
         this.isMusicMuted = false;
+    }
+
+    muteAmbient() {
+        this.audioElements.music.ambient.volume = 0;
+        this.isAmbientMuted = true;
+    }
+
+    unmuteAmbient() {
+        this.audioElements.music.ambient.volume = 1;
+        this.isAmbientMuted = false;
     }
 
 
@@ -73,18 +79,40 @@ class Sound {
     fadeMusic() {
         let vol = 0;
         this.audioElements.music.bg.volume = vol;
+        this.audioElements.music.ambient.volume = vol;
+
         this.audioElements.music.bg.currentTime = Math.floor(Math.random() * 1200);
+        this.audioElements.music.ambient.currentTime = Math.floor(Math.random() * 1200);
+
         this.audioElements.music.bg.play();
+        this.audioElements.music.ambient.play();
 
         const fadeout = setInterval(() => {
+
+            if (vol < 0.4) {
+                this.audioElements.music.ambient.volume = vol;
+            }
+
             if (vol < 0.8) {
                 vol += 0.001;
                 this.audioElements.music.bg.volume = vol;
+                
             }
             else {
                 clearInterval(fadeout);
             }
         }, 20);
+
+
+        this.audioElements.music.bg.addEventListener('ended',() => {
+            this.audioElements.music.bg.currentTime = Math.floor(Math.random() * 1200);
+            this.audioElements.music.bg.play();
+        }, false);
+
+        this.audioElements.music.ambient.addEventListener('ended',() => {
+            this.audioElements.music.ambient.currentTime = Math.floor(Math.random() * 1200);
+            this.audioElements.music.ambient.play();
+        }, false);
     }
 
     stopSound(key) {

@@ -87,8 +87,12 @@ const login = {
         const responseData = await response.json();
 
         if (responseData.success) {
-            alert("Success. You can login now.");
+            //alert("Success. You can login now.");
             this.switchTo("login");
+            this.DOM.loginErrors.innerHTML += `
+                <div class="success">You can login now.</div>
+            `;
+            this.DOM.loginName.focus();
         } else {
             this.DOM.registerErrors.innerHTML += `
                 <div class="error">${responseData.reason}</div>

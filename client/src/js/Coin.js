@@ -1,7 +1,7 @@
 class Coin {
     constructor(container) {
         this.img = document.createElement("img");
-        this.img.src = `../assets/coin.png`;
+        this.img.src = `../assets/pepecoin.png`;
         this.img.classList.add("coin");
         this.img.style.animationDuration = `${Math.random() * 800 + 800}ms`;
 

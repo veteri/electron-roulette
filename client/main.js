@@ -26,6 +26,7 @@ function createLoginWindow() {
 
     loginWindow.setMenu(null);
     loginWindow.loadFile("./src/html/login.html");
+    loginWindow.webContents.openDevTools()
     loginWindow.setResizable(false);
 }
 
@@ -134,7 +135,7 @@ function createRouletteWindow(username) {
         });
 
         socket.emit("login", username);
-
+        //rouletteWindow.webContents.openDevTools()
         console.log("mainWindow did-finish-load executed");
     });
 

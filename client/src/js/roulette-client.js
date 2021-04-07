@@ -54,10 +54,15 @@ ipcRenderer.on("set-initial-user-data", (e, user) => {
 /* We won a bet */
 ipcRenderer.on("win", (e, type, amount) => {
     console.log(`Got win from main process, type: ${type}, amount: ${amount}`);
-    win.showWin(type, amount);
+    //win.showWin(type, amount);
+    win.showWin("jackpot", 999999999);
     win.once("add-to-funds", () => {
         topBar.addFunds(amount);
-        win.sound.playSound("addToFunds");
+        win.sound.playSound({
+            normalwin: "cashNormal",
+            bigwin: "cashBig",
+            jackpot: "cashJackpot"
+        }[type]);
     });
 });
 

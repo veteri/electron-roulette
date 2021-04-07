@@ -121,6 +121,8 @@
         .wait div.label {
             margin-top: 20px;
             font-size: 16px;
+            font-family: "Flama";
+            letter-spacing: 3px;
         }
 
         @keyframes scale {
@@ -369,6 +371,9 @@
             text-align: right;
             min-width: 200px;
             box-shadow: 0 0 20px black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .top-bar .funds .value {
@@ -380,9 +385,6 @@
         .top-bar .funds .icon {
             width: 33px;
             margin-right: 10px;
-            position: absolute;
-            top: 6px;
-            left: 7px;
             animation: fundsiconspin 2s linear infinite;
         }
 
@@ -392,6 +394,11 @@
             border: none;
             cursor: pointer;
             transition: transform 300ms;
+            outline:0;
+        }
+
+        .top-bar .mute button:focused {
+            outline: 0;
         }
 
         .top-bar .mute button:hover {
@@ -419,6 +426,18 @@
         }
 
         .top-bar .mute .muteMusic.muted img {
+            filter: grayscale(100%);
+        }
+
+        .top-bar .mute .muteAmbient {
+            width: 50px;
+        }
+
+        .top-bar .mute .muteAmbient img {
+            width: 30px;
+        }
+
+        .top-bar .mute .muteAmbient.muted img {
             filter: grayscale(100%);
         }
 
@@ -656,12 +675,13 @@
 
       <div class="top-bar hidden">
         <div class="funds">
+            <img class="icon" src="../assets/pepecoin.png" alt="">
             <span id="fundvalue" class="value">0</span>
-            <img class="icon" src="../assets/coin.png" alt="">
         </div>
         <div class="mute">
             <button class="muteEffects"><img src="../assets/effects.svg" alt=""></button>
             <button class="muteMusic"><img src="../assets/musical-note.png" alt=""></button>
+            <button class="muteAmbient"><img src="../assets/meeting.png" alt=""></button>
         </div>
       </div>
 
@@ -687,7 +707,7 @@
                 </div>
                 <div class="bet-sum">
                     <span class="value">0</span>
-                    <img src="../assets/coin.png" width="30" alt="">
+                    <img src="../assets/pepecoin.png" width="30" alt="">
                 </div>
             </div>
             <div class="bet-entries">
@@ -706,7 +726,7 @@
                 </div>
                 <div class="bet-sum">
                     <span class="value">0</span>
-                    <img src="../assets/coin.png" width="30" alt="">
+                    <img src="../assets/pepecoin.png" width="30" alt="">
                 </div>
             </div>
             <div class="bet-entries">
@@ -725,7 +745,7 @@
                 </div>
                 <div class="bet-sum">
                     <span class="value">0</span>
-                    <img src="../assets/coin.png" width="30" alt="">
+                    <img src="../assets/pepecoin.png" width="30" alt="">
                 </div>
             </div>
             <div class="bet-entries">
@@ -739,13 +759,16 @@
         </div>
       </div>
       <audio src="../assets/bg.mp3" class="bg"></audio>
+      <audio src="../assets/bgambient.mp3" class="bgambient"></audio>
       <audio class="jackpot" src="../assets/monkawin.mp3"></audio>
       <audio class="normalwin" src="../assets/normalwin.mp3"></audio>
       <audio class="placebet" src="../assets/place-bet.wav"></audio>
       <audio class="bigwin" src="../assets/bigwin.mp3"></audio>
       <audio class="newround" src="../assets/spin2.mp3"></audio>
       <audio class="welcome" src="../assets/welcome.wav"></audio>
-      <audio class="add-to-funds" src="../assets/add-to-funds.wav"></audio>
+      <audio class="cash-normal-win" src="../assets/cash-normalwin.wav"></audio>
+      <audio class="cash-big-win" src="../assets/cash-bigwin.wav"></audio>
+      <audio class="cash-jackpot" src="../assets/cash-jackpot.wav"></audio>
 
     <!-- You can also require other files to run in this process -->
     <script  src="../js/roulette-client.js"></script>

@@ -6,6 +6,7 @@ class TopBar {
         this.funds = document.querySelector(".funds .value");
         this.muteEffects = document.querySelector(".mute .muteEffects");
         this.muteMusic = document.querySelector(".mute .muteMusic");
+        this.muteAmbient = document.querySelector(".mute .muteAmbient");
 
         this.count = new countUp("fundvalue", 0);
         this.sound = new Sound();
@@ -54,6 +55,17 @@ class TopBar {
                 } else {
                     this.sound.muteMusic();
                     this.muteMusic.classList.add("muted");
+                }
+            });
+
+        this.muteAmbient
+            .addEventListener("click", () => {
+                if (this.sound.isAmbientMuted) {
+                    this.muteAmbient.classList.remove("muted");
+                    this.sound.unmuteAmbient();
+                } else {
+                    this.sound.muteAmbient();
+                    this.muteAmbient.classList.add("muted");
                 }
             });
     }
